@@ -1,19 +1,19 @@
-package HibernateStudy;
+package HibernateOneToOne;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class UserOne implements Serializable {
 
     private Long id;
 
     private int age;
     private String firstname;
     private String lastname;
-    private Role role;
-    public User(){
+    private RoleOne roleone;
+    public UserOne(){
 
     }
-    public User(Long id){
+    public UserOne(Long id){
         this.id=id;
     }
 
@@ -49,11 +49,11 @@ public class User implements Serializable {
         this.lastname = lastname;
     }
 
-    public Role getRole() {
-        return role;
+    public RoleOne getRoleone() {
+        return roleone;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoleone(RoleOne roleone) {
+        this.roleone = roleone;
     }
 }

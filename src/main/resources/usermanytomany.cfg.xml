@@ -1,0 +1,20 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="HibernateManyToMany.UserMany" table="usermany">
+        <id name="id" column="user_id" type="int">
+            <generator class="native"/>
+        </id>
+        <property name="firstname" column="first_name" type="java.lang.String"/>
+        <property name="lastname" column="last_name" type="java.lang.String"/>
+        <property name="age" column="age" type="int"/>
+        <set name="roles" table="user_role">
+            <key>
+                <column name="user_id" not-null="true"/>
+            </key>
+            <many-to-many column="role_id" class="HibernateManyToMany.RoleMany"/>
+        </set>
+    </class>
+</hibernate-mapping>

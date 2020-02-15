@@ -6,3 +6,4 @@ public class Main {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     }
 }
+//Конфиги прописаны на many-to-many (надо откорректировать имена - результат рефакторинга!)

@@ -1,19 +1,20 @@
-package HibernateStudy;
+package HibernateManyToMany;
 
 import java.io.Serializable;
-
-public class User implements Serializable {
+import java.util.HashSet;
+import java.util.Set;
+public class UserMany implements Serializable {
 
     private Long id;
 
     private int age;
     private String firstname;
     private String lastname;
-    private Role role;
-    public User(){
+    private Set <RoleMany> roles;
+    public UserMany(){
 
     }
-    public User(Long id){
+    public UserMany(Long id){
         this.id=id;
     }
 
@@ -49,11 +50,12 @@ public class User implements Serializable {
         this.lastname = lastname;
     }
 
-    public Role getRole() {
-        return role;
+    public Set<RoleMany> getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(Set<RoleMany> roles) {
+        this.roles = roles;
     }
+
 }
