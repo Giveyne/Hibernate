@@ -11,11 +11,11 @@ public class RoleAnatation {
     @Column(name = "id", length = 11)
     private Long id;
 
-    @Column(name = "title", length = 50)
+    @Column(name = "title", length = 55)
     private String title;
 
-    @ManyToMany(mappedBy = "roles")
-    private Set<UserAnatation> users = new HashSet<UserAnatation>();
+    @OneToMany(mappedBy = "role")
+    private Set <UserAnatation> users = new HashSet<UserAnatation>();
     public RoleAnatation(){ }
 
     public Long getId() {

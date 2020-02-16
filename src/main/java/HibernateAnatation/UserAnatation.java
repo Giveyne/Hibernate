@@ -11,18 +11,21 @@ public class UserAnatation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", length = 11)
     private Long id;
-    @Column(name = "first_name", length = 50)
+    @Column(name = "first_name", length = 55)
     private String firstname;
-    @Column(name = "last__name", length = 50)
+    @Column(name = "last__name", length = 55)
     private String lastname;
     @Column(name = "age", length = 5)
     private int age;
-
+/*
     @ManyToMany
     @JoinTable(name = "user_role",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "role_id")})
-    private Set<RoleAnatation> roles = new HashSet<RoleAnatation>();
+            joinColumns = {@JoinColumn (name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")})*/
+//@PrimaryKeyJoinColumn - для OneToOne
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private RoleAnatation role;
 
     public UserAnatation(){
 
@@ -60,11 +63,11 @@ public class UserAnatation {
         this.age = age;
     }
 
-    public Set<RoleAnatation> getRoles() {
-        return roles;
+    public RoleAnatation getRole() {
+        return role;
     }
 
-    public void setRoles(Set<RoleAnatation> roles) {
-        this.roles = roles;
+    public void setRole(RoleAnatation role) {
+        this.role = role;
     }
 }
