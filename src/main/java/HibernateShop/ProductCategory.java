@@ -17,13 +17,15 @@ public class ProductCategory extends Shop {
     @Column(name = "count")
     private int count;
 
-    @OneToMany(mappedBy = "productcategory")
-    private Set<Product> products = new HashSet<Product>();
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "parent_product_category", referencedColumnName = "id")
+    private Product product;
 
-    public ProductCategory(){
+    public ProductCategory() {
         super();
     }
-    public ProductCategory(Long id){
+
+    public ProductCategory(Long id) {
         super(id);
     }
 
@@ -43,11 +45,12 @@ public class ProductCategory extends Shop {
         this.count = count;
     }
 
-    public Set<Product> getProducts() {
-        return products;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProducts(Set<Product> products) {
-        this.products = products;
+    public void setProduct(Product product) {
+        this.product = product;
     }
+
 }

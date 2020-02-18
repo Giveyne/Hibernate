@@ -9,7 +9,7 @@ public abstract class Shop implements Serializable {
     private static final long serialVersionUID = 5502793965561857432L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
+    @Column(name = "id")
     private Long id;
 
     public Shop(){

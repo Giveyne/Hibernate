@@ -20,14 +20,13 @@ public class Product extends Shop{
     @Column(name = "price")
     private BigDecimal price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_product_category", referencedColumnName = "id")
-    private ProductCategory productcategory;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
+    private Set<ProductCategory> productcategories = new HashSet<ProductCategory>();
 
     @Column(name = "count")
-    private int count;
+    private Integer count;
 
-    @ManyToMany(mappedBy = "products")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "products")
     private Set<Order> orders = new HashSet<Order>();
 
     public Product(){
@@ -61,14 +60,6 @@ public class Product extends Shop{
         this.price = price;
     }
 
-    public ProductCategory getProductcategory() {
-        return productcategory;
-    }
-
-    public void setProductcategory(ProductCategory productcategory) {
-        this.productcategory = productcategory;
-    }
-
     public int getCount() {
         return count;
     }
@@ -85,13 +76,21 @@ public class Product extends Shop{
         this.orders = orders;
     }
 
+    public Set<ProductCategory> getProductcategories() {
+        return productcategories;
+    }
+
+    public void setProductcategories(Set<ProductCategory> productcategories) {
+        this.productcategories = productcategories;
+    }
+
     @Override
     public String toString() {
-        return "Product{" +
+        return "Id = " + super.getId () +"Product{" +
                 "title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", productcategory=" + productcategory +
+                ", productcategories=" + productcategories +
                 ", count=" + count +
                 ", orders=" + orders +
                 '}';
