@@ -5,15 +5,25 @@ import org.hibernate.*;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import java.math.BigDecimal;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+
+
+
+
 public class Main {
     public static void main(String[] args) {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
+
+
+
         List <Product> products = null;
         BigDecimal price = null;
         int [] arr = {1, 2, 3, 4};
